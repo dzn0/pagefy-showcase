@@ -1,0 +1,834 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #f6f6f3;
+  --surface: #ffffff;
+  --surface-2: #efefec;
+  --ink: #141614;
+  --ink-2: #3d3f3b;
+  --muted: #60625d;
+  --line: #e3e3de;
+  --line-strong: #cfcfc9;
+  --green: #357a27;
+  --green-hover: #2c6821;
+  --green-ink: #2f6e22;
+  --lime: #6fcf3c;
+  --lime-soft: #e4f5d6;
+  --forest: #17351a;
+  --forest-2: #1f4622;
+  --on-green: #ffffff;
+  --danger: #b3261e;
+  --tint: #f0f0ec;
+  --mark-back: #6fcf3c;
+  --mark-front: #3f8f2f;
+  --wash: #ededea;
+  --dot: rgb(20 22 20 / 0.11);
+  --shadow-frame: 0 1px 2px rgb(20 26 18 / 0.04), 0 12px 32px -8px rgb(20 26 18 / 0.12),
+    0 40px 80px -24px rgb(20 26 18 / 0.14);
+  --shadow-soft: 0 1px 2px rgb(20 26 18 / 0.05), 0 6px 16px -6px rgb(20 26 18 / 0.1);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111214;
+    --surface: #1a1b1e;
+    --surface-2: #232428;
+    --ink: #eeeff0;
+    --ink-2: #cfd1d4;
+    --muted: #9d9fa4;
+    --line: #2c2e31;
+    --line-strong: #3a3c40;
+    --green: #6fcf3c;
+    --green-hover: #83da55;
+    --green-ink: #8fdc66;
+    --lime: #6fcf3c;
+    --lime-soft: #1f3317;
+    --forest: #142e16;
+    --forest-2: #1b3d1e;
+    --on-green: #0d160b;
+    --danger: #f2b8b5;
+    --tint: #151618;
+    --mark-back: #4fa92c;
+    --mark-front: #6fcf3c;
+    --wash: #17181a;
+    --dot: rgb(255 255 255 / 0.07);
+    --shadow-frame: 0 1px 2px rgb(0 0 0 / 0.3), 0 24px 60px -20px rgb(0 0 0 / 0.6);
+    --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 20px -8px rgb(0 0 0 / 0.5);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #111214;
+  --surface: #1a1b1e;
+  --surface-2: #232428;
+  --ink: #eeeff0;
+  --ink-2: #cfd1d4;
+  --muted: #9d9fa4;
+  --line: #2c2e31;
+  --line-strong: #3a3c40;
+  --green: #6fcf3c;
+  --green-hover: #83da55;
+  --green-ink: #8fdc66;
+  --lime: #6fcf3c;
+  --lime-soft: #1f3317;
+  --forest: #142e16;
+  --forest-2: #1b3d1e;
+  --on-green: #0d160b;
+  --danger: #f2b8b5;
+  --tint: #151618;
+  --mark-back: #4fa92c;
+  --mark-front: #6fcf3c;
+  --wash: #17181a;
+  --dot: rgb(255 255 255 / 0.07);
+  --shadow-frame: 0 1px 2px rgb(0 0 0 / 0.3), 0 24px 60px -20px rgb(0 0 0 / 0.6);
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 20px -8px rgb(0 0 0 / 0.5);
+  color-scheme: dark;
+}
+
+/* Journey palette: each step of the path to a sale owns one hue, on the
+   landing and in the app, so the product never reads as a single green.
+   azure = encontrar (busca), grape = montar (sites), coral = oferecer
+   (abordagem), honey = receber (dinheiro), berry = perdido / alerta.
+   Green stays the action color. `-soft` is a tile/badge ground, `-ink` is
+   the same hue tuned for text on that ground (≥4.5:1). */
+:root {
+  --azure: #2d6cdf;
+  --azure-soft: #e5eefd;
+  --azure-ink: #1c52b8;
+  --grape: #7b4fd6;
+  --grape-soft: #efe9fd;
+  --grape-ink: #5b35ad;
+  --coral: #e8643a;
+  --coral-soft: #fde9e0;
+  --coral-ink: #b0431b;
+  --honey: #e2a31b;
+  --honey-soft: #fcf1d4;
+  --honey-ink: #85590a;
+  --berry: #d63b63;
+  --berry-soft: #fce5eb;
+  --berry-ink: #a8264a;
+  --paper: #fbfaf6;
+  --on-hue: #ffffff;
+  /* Verde do WhatsApp. O preenchimento é a cor oficial (constante nos dois
+     temas); o -ink é a versão escurecida pro ícone sozinho sobre a superfície
+     clara, onde o #25D366 não alcança 3:1. */
+  --whatsapp: #25d366;
+  --whatsapp-ink: #199347;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --azure: #6e9ff5;
+    --azure-soft: #15223a;
+    --azure-ink: #a3c3fa;
+    --grape: #a68af0;
+    --grape-soft: #221a38;
+    --grape-ink: #c9b8f8;
+    --coral: #f28a63;
+    --coral-soft: #321a10;
+    --coral-ink: #f7b397;
+    --honey: #f0bf4c;
+    --honey-soft: #2c230f;
+    --honey-ink: #f5d283;
+    --berry: #f07592;
+    --berry-soft: #341520;
+    --berry-ink: #f6a5b8;
+    --paper: #161719;
+    --on-hue: #0b100a;
+    --whatsapp-ink: #3ddb7a;
+  }
+}
+
+:root[data-theme="dark"] {
+  --azure: #6e9ff5;
+  --azure-soft: #15223a;
+  --azure-ink: #a3c3fa;
+  --grape: #a68af0;
+  --grape-soft: #221a38;
+  --grape-ink: #c9b8f8;
+  --coral: #f28a63;
+  --coral-soft: #321a10;
+  --coral-ink: #f7b397;
+  --honey: #f0bf4c;
+  --honey-soft: #2c230f;
+  --honey-ink: #f5d283;
+  --berry: #f07592;
+  --berry-soft: #341520;
+  --berry-ink: #f6a5b8;
+  --paper: #161719;
+  --on-hue: #0b100a;
+  --whatsapp-ink: #3ddb7a;
+}
+
+/* Dashboard canvas: neutral grounds and cards (no green tint) so the
+   journey hues carry the color and green stays the action. The ground sits
+   one clear step darker than the cards, plus a soft card shadow. Scoped to
+   .pf-canvas — the landing keeps its own tinted palette. */
+.pf-canvas {
+  --bg: #ecece8;
+  --surface: #ffffff;
+  --surface-2: #f2f2ef;
+  --ink-2: #3d3f3b;
+  --muted: #61635e;
+  --line: #deded9;
+  --line-strong: #cbcbc5;
+  --paper: #fafaf8;
+  --shadow-card: 0 1px 2px rgb(20 22 20 / 0.06), 0 6px 18px -8px rgb(20 22 20 / 0.14);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .pf-canvas {
+    --bg: #111214;
+    --surface: #1d1e21;
+    --surface-2: #26282b;
+    --ink: #eeeff0;
+    --ink-2: #cfd1d4;
+    --muted: #9d9fa4;
+    --line: #303236;
+    --line-strong: #404247;
+    --paper: #18191b;
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 22px -10px rgb(0 0 0 / 0.6);
+  }
+}
+:root[data-theme="dark"] .pf-canvas {
+  --bg: #111214;
+  --surface: #1d1e21;
+  --surface-2: #26282b;
+  --ink: #eeeff0;
+  --ink-2: #cfd1d4;
+  --muted: #9d9fa4;
+  --line: #303236;
+  --line-strong: #404247;
+  --paper: #18191b;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 22px -10px rgb(0 0 0 / 0.6);
+}
+
+/* Site generator devices (notebook + phone): graphite bezels and an aluminium
+   deck; the deck sinks to graphite in dark theme so it doesn't glow. */
+.pf-canvas {
+  --device-bezel: #1b1c1f;
+  --device-deck-top: #dcddd9;
+  --device-deck-bottom: #b7b8b3;
+  /* The system UI inside the screens (menu bar, browser, dock, status bar)
+     follows the app theme, like the OS light/dark appearance. */
+  --os-wall: linear-gradient(160deg, #dfe4ea 0%, #c9d0da 55%, #b9c1cc 100%);
+  --os-menubar: rgb(255 255 255 / 0.55);
+  --os-ink: #1d1d1f;
+  --os-dim: #86868b;
+  --os-toolbar: #f6f6f7;
+  --os-line: #e5e5e7;
+  --os-field: #e8e8ea;
+  --os-dock: rgb(255 255 255 / 0.35);
+  --os-dock-line: rgb(255 255 255 / 0.5);
+  --os-bar: #f7f7f8;
+  --os-pill: #ffffff;
+  --os-screen: #ffffff;
+  --os-home: #000000;
+  --os-paper: #fafaf8;
+  --os-paper-ink: #141614;
+  --os-paper-muted: #61635e;
+  --os-sk: #ececea;
+  --os-sk-hi: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .pf-canvas {
+    --device-bezel: #2c2d31;
+    --device-deck-top: #45464b;
+    --device-deck-bottom: #2c2d31;
+    --os-wall: linear-gradient(160deg, #2b3038 0%, #1d2127 55%, #15181c 100%);
+    --os-menubar: rgb(30 30 32 / 0.6);
+    --os-ink: #f5f5f7;
+    --os-dim: #98989d;
+    --os-toolbar: #2a2a2c;
+    --os-line: #3a3a3c;
+    --os-field: #3a3a3c;
+    --os-dock: rgb(60 60 64 / 0.45);
+    --os-dock-line: rgb(255 255 255 / 0.12);
+    --os-bar: #1c1c1e;
+    --os-pill: #2c2c2e;
+    --os-screen: #000000;
+    --os-home: #ffffff;
+    --os-paper: #161618;
+    --os-paper-ink: #eeeff0;
+    --os-paper-muted: #9d9fa4;
+    --os-sk: #232427;
+    --os-sk-hi: #2e2f33;
+  }
+}
+:root[data-theme="dark"] .pf-canvas {
+  --device-bezel: #2c2d31;
+  --device-deck-top: #45464b;
+  --device-deck-bottom: #2c2d31;
+  --os-wall: linear-gradient(160deg, #2b3038 0%, #1d2127 55%, #15181c 100%);
+  --os-menubar: rgb(30 30 32 / 0.6);
+  --os-ink: #f5f5f7;
+  --os-dim: #98989d;
+  --os-toolbar: #2a2a2c;
+  --os-line: #3a3a3c;
+  --os-field: #3a3a3c;
+  --os-dock: rgb(60 60 64 / 0.45);
+  --os-dock-line: rgb(255 255 255 / 0.12);
+  --os-bar: #1c1c1e;
+  --os-pill: #2c2c2e;
+  --os-screen: #000000;
+  --os-home: #ffffff;
+  --os-paper: #161618;
+  --os-paper-ink: #eeeff0;
+  --os-paper-muted: #9d9fa4;
+  --os-sk: #232427;
+  --os-sk-hi: #2e2f33;
+}
+
+/* Placeholder blocks while the AI plans the site: a slow sweep, not a spinner. */
+.pf-skeleton {
+  background: linear-gradient(100deg, var(--surface-2) 30%, var(--surface) 50%, var(--surface-2) 70%) 0 0 / 300% 100%;
+  animation: pf-skeleton 1.8s var(--ease-out-expo) infinite;
+}
+@keyframes pf-skeleton {
+  from {
+    background-position: 100% 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .pf-skeleton {
+    animation: none;
+  }
+}
+
+/* Fields in the app draw their own focus (green border + soft ring), so the
+   global outline would stack into a double ring. */
+.pf-canvas :is(input, select, textarea):focus-visible {
+  outline: none;
+}
+
+/* App page that outgrows the 72rem content cap (lead search grid): widens to
+   the space beside the sidebar, up to 100rem, still centred. 21rem = sidebar
+   16rem + main padding 4rem + room for the scrollbar. Never narrows. */
+@media (min-width: 1024px) {
+  .pf-wide {
+    margin-inline: min(0px, calc((100% - min(100vw - 21rem, 100rem)) / 2));
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-green: var(--green);
+  --color-green-hover: var(--green-hover);
+  --color-green-ink: var(--green-ink);
+  --color-lime: var(--lime);
+  --color-lime-soft: var(--lime-soft);
+  --color-forest: var(--forest);
+  --color-forest-2: var(--forest-2);
+  --color-on-green: var(--on-green);
+  --color-danger: var(--danger);
+  --color-tint: var(--tint);
+  --color-wash: var(--wash);
+  --color-paper: var(--paper);
+  --color-on-hue: var(--on-hue);
+  --color-whatsapp: var(--whatsapp);
+  --color-whatsapp-ink: var(--whatsapp-ink);
+  --color-azure: var(--azure);
+  --color-azure-soft: var(--azure-soft);
+  --color-azure-ink: var(--azure-ink);
+  --color-grape: var(--grape);
+  --color-grape-soft: var(--grape-soft);
+  --color-grape-ink: var(--grape-ink);
+  --color-coral: var(--coral);
+  --color-coral-soft: var(--coral-soft);
+  --color-coral-ink: var(--coral-ink);
+  --color-honey: var(--honey);
+  --color-honey-soft: var(--honey-soft);
+  --color-honey-ink: var(--honey-ink);
+  --color-berry: var(--berry);
+  --color-berry-soft: var(--berry-soft);
+  --color-berry-ink: var(--berry-ink);
+  --font-display: var(--font-sora);
+  --font-sans: var(--font-manrope);
+  --font-mono: var(--font-geist-mono);
+  --shadow-frame: var(--shadow-frame);
+  --shadow-soft: var(--shadow-soft);
+  --shadow-card: var(--shadow-card);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-feature-settings: "ss01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-sora), system-ui, sans-serif;
+  text-wrap-style: balance;
+}
+
+p {
+  text-wrap-style: pretty;
+}
+
+::selection {
+  background: var(--lime);
+  color: #0d160b;
+}
+
+:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+input {
+  caret-color: var(--green);
+}
+
+a {
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+html {
+  scrollbar-color: var(--line-strong) var(--bg);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* "Gerar site" (GenerateButton): a ação principal do produto. Roxo chapado
+   da etapa "montar", sem gradiente de volume nem brilho passando: o peso vem
+   da cor e do contraste, não de efeito. No hover ele sobe 1px, ganha sombra e
+   as linhas do ícone se redesenham. */
+.pf-magic {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  color: var(--on-hue);
+  background: var(--grape);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.16),
+    0 1px 2px color-mix(in oklab, var(--grape) 30%, transparent);
+  transition:
+    transform 0.2s var(--ease-out-expo),
+    background-color 0.2s var(--ease-out-expo),
+    box-shadow 0.25s var(--ease-out-expo);
+}
+.pf-magic:hover {
+  transform: translateY(-1px);
+  background: color-mix(in oklab, var(--grape) 88%, #ffffff);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 0.2),
+    0 6px 16px -8px color-mix(in oklab, var(--grape) 70%, transparent);
+}
+.pf-magic:active {
+  transform: translateY(0) scale(0.97);
+}
+/* "Editar site" (GenerateButton, site already made): the quiet sibling of
+   .pf-magic. Grape outline on a faint grape ground so it reads as an action,
+   not a "done" badge; hover fills a step and the pencil tips as if to write. */
+.pf-edit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  color: var(--grape-ink);
+  background: color-mix(in oklab, var(--grape) 9%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--grape) 38%, transparent);
+  transition:
+    background-color 0.25s var(--ease-out-expo),
+    box-shadow 0.25s var(--ease-out-expo),
+    transform 0.25s var(--ease-out-expo);
+}
+.pf-edit:hover {
+  background: color-mix(in oklab, var(--grape) 16%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--grape) 62%, transparent);
+}
+.pf-edit:active {
+  transform: scale(0.97);
+}
+.pf-edit-icon {
+  transition: transform 0.35s var(--ease-out-expo);
+}
+.pf-edit:hover .pf-edit-icon {
+  transform: rotate(-12deg) translateY(-1px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .pf-edit:hover .pf-edit-icon {
+    transform: none;
+  }
+}
+.pf-magic-icon {
+  opacity: 0.95;
+}
+.pf-magic-line {
+  stroke-dasharray: 1;
+}
+.pf-magic:hover .pf-magic-line {
+  animation: pf-draw 0.45s var(--ease-out-expo) both;
+}
+.pf-magic:hover .pf-magic-line-2 {
+  animation-delay: 0.08s;
+}
+@keyframes pf-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+/* Dado de Buscar leads: um giro e meio com um leve pulo ao sortear. */
+@keyframes pf-dice-roll {
+  0% {
+    transform: rotate(0) scale(1);
+  }
+  40% {
+    transform: rotate(320deg) scale(1.18);
+  }
+  100% {
+    transform: rotate(540deg) scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [class*="pf-dice-roll"] {
+    animation: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-magic:hover .pf-magic-line {
+    animation: none;
+  }
+  .pf-magic:hover {
+    transform: none;
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---- Checkout: a folha lateral de pagamento (checkout-sheet.tsx) ----
+   Entra da direita no desktop e de baixo no celular. O fundo escurece junto. */
+.pf-sheet {
+  max-width: none;
+  max-height: none;
+  margin: 0 0 0 auto;
+  height: 100dvh;
+  width: min(100vw, 30rem);
+  border-radius: 28px 0 0 28px;
+}
+.pf-sheet[open] {
+  animation: pf-sheet-side 0.5s var(--ease-out-expo) both;
+}
+.pf-sheet::backdrop {
+  background: rgb(11 12 13 / 0.5);
+  backdrop-filter: blur(2px);
+  animation: fade-in 0.3s ease-out both;
+}
+@media (max-width: 639px) {
+  .pf-sheet {
+    margin: auto 0 0;
+    width: 100vw;
+    height: auto;
+    max-height: 94dvh;
+    border-radius: 28px 28px 0 0;
+  }
+  .pf-sheet[open] {
+    animation-name: pf-sheet-up;
+  }
+}
+@keyframes pf-sheet-side {
+  from {
+    transform: translateX(48px);
+    opacity: 0;
+  }
+}
+@keyframes pf-sheet-up {
+  from {
+    transform: translateY(56px);
+    opacity: 0;
+  }
+}
+
+/* Troca de etapa dentro da folha: o conteúdo novo assenta, sem pular. */
+.pf-step {
+  animation: pf-step-in 0.45s var(--ease-out-expo) both;
+}
+@keyframes pf-step-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(3px);
+  }
+}
+
+/* O momento do pagamento confirmado: o círculo cresce e o check se desenha. */
+.pf-paid-ring {
+  animation: pf-paid-ring 0.7s var(--ease-out-expo) both;
+}
+.pf-paid-check {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: pf-paid-check 0.45s 0.25s var(--ease-out-expo) forwards;
+}
+@keyframes pf-paid-ring {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+    box-shadow: 0 0 0 0 rgb(111 207 60 / 0.55);
+  }
+  60% {
+    box-shadow: 0 0 0 18px rgb(111 207 60 / 0);
+  }
+}
+@keyframes pf-paid-check {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Esperando o pagamento: o ponto respira, sem piscar. */
+.pf-waiting-dot {
+  animation: pf-breathe 1.8s ease-in-out infinite;
+}
+@keyframes pf-breathe {
+  50% {
+    transform: scale(0.6);
+    opacity: 0.45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-sheet[open],
+  .pf-step,
+  .pf-paid-ring {
+    animation: fade-in 0.2s ease-out both;
+  }
+  .pf-paid-check {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .pf-waiting-dot {
+    animation: none;
+  }
+}
+
+.hero-field {
+  background:
+    radial-gradient(circle, var(--dot) 1px, transparent 1.4px) 0 0 / 22px 22px,
+    linear-gradient(180deg, var(--wash) 0%, var(--bg) 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 55%, transparent 100%);
+}
+
+/* Reveal on-screen: só esconde quando o JS está ativo, então sem JS tudo aparece. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  filter: blur(6px);
+  transition:
+    opacity 0.8s var(--ease-out-expo),
+    transform 0.8s var(--ease-out-expo),
+    filter 0.8s var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+.rise-in {
+  animation: rise-in 0.5s var(--ease-out-expo) both;
+}
+
+/* ------------------------------------------------ Mapa da busca (Leaflet) */
+.pf-map .leaflet-container {
+  background: var(--surface-2);
+  font-family: var(--font-manrope), system-ui, sans-serif;
+}
+
+.pf-pin-icon {
+  background: none;
+  border: 0;
+}
+
+.pf-pin {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--pin-size, 34px);
+  height: var(--pin-size, 34px);
+  overflow: hidden;
+  border: 2.5px solid #fff;
+  border-radius: 9999px;
+  background: var(--pin);
+  color: #fff;
+  font-family: var(--font-sora), system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.25), 0 6px 14px -6px rgb(0 0 0 / 0.45);
+  transition:
+    transform 0.2s var(--ease-out-expo),
+    box-shadow 0.2s var(--ease-out-expo);
+}
+
+.pf-pin img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pf-pin-icon:hover .pf-pin {
+  transform: scale(1.12);
+}
+
+.pf-pin-icon.is-active .pf-pin {
+  transform: scale(1.45);
+  box-shadow: 0 0 0 4px rgb(111 207 60 / 0.55), 0 8px 18px -6px rgb(0 0 0 / 0.5);
+}
+
+.pf-pin-icon:focus-visible {
+  outline: none;
+}
+.pf-pin-icon:focus-visible .pf-pin {
+  box-shadow: 0 0 0 3px var(--green);
+}
+
+.pf-map .leaflet-bar {
+  overflow: hidden;
+  border: 1px solid var(--line-strong);
+  border-radius: 14px;
+  box-shadow: var(--shadow-soft);
+}
+.pf-map .leaflet-bar a,
+.pf-map .leaflet-bar a:hover {
+  width: 34px;
+  height: 34px;
+  line-height: 32px;
+  border-bottom-color: var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font-weight: 500;
+}
+.pf-map .leaflet-bar a:hover {
+  background: var(--surface-2);
+}
+.pf-map .leaflet-bar a.leaflet-disabled {
+  color: var(--muted);
+  background: var(--surface);
+}
+
+/* O leaflet.css carrega depois deste arquivo e pinta o crédito de branco
+   (.leaflet-container .leaflet-control-attribution): a especificidade maior
+   aqui faz ele seguir o tema. */
+.pf-map .leaflet-container .leaflet-control-attribution {
+  margin: 0 8px 8px 0;
+  border-radius: 9999px;
+  padding: 2px 9px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  color: var(--muted);
+  font-size: 0.66rem;
+  line-height: 1.4;
+  box-shadow: 0 0 0 1px var(--line);
+}
+.pf-map .leaflet-container .leaflet-control-attribution a {
+  color: var(--ink-2);
+  text-decoration: none;
+}
+.pf-map .leaflet-container .leaflet-control-attribution a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.pf-map-tip.leaflet-tooltip {
+  padding: 4px 10px;
+  border: 1px solid var(--line);
+  border-radius: 9999px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.76rem;
+  font-weight: 600;
+  box-shadow: var(--shadow-soft);
+  white-space: nowrap;
+}
+.pf-map-tip.leaflet-tooltip-top::before {
+  border-top-color: var(--surface);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pf-pin {
+    transition: none;
+  }
+}
